@@ -4,11 +4,23 @@ import 'package:freo_assignment/controller/search_controller.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
 
   final SearchController controller = Get.put(SearchController());
 
-  SearchScreen({super.key});
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.loadCachedResults();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,3 +117,4 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
+
